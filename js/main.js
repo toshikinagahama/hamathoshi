@@ -11,13 +11,26 @@ $(videoElement).chromeContext({
             separator: true
         },
         {
-            title: 'World',
+            title: 'キャンセル',
             onclick: function () {
-                console.log('world.');
+                $('.cctx:visible').hide();
             }
         }
     ]
 });
+
+function triggerEvent(element, event) {
+    if (document.createEvent) {
+        // IE以外
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent(event, true, true); // event type, bubbling, cancelable
+        return element.dispatchEvent(evt);
+    } else {
+        // IE
+        var evt = document.createEventObject();
+        return element.fireEvent("on" + event, evt)
+    }
+}
 
 Hammer(videoElement).add(new Hammer.Pan({
     direction: Hammer.DIRECTION_ALL,
@@ -55,6 +68,13 @@ function handleDrag(event) {
 
 
 Hammer(videoElement).on('tap', function (event) {
+
+    var menu = $('.cctx[data-cctxId="' + $(videoElement).attr('data-cctxId') + '"]');
+    console.log(event.center);
+
+    menu.css('top', event.center.y).css('left', event.center.x).show();
+
+
     if (isPlaying){
         video.pause();
         isPlaying = false;
@@ -62,6 +82,14 @@ Hammer(videoElement).on('tap', function (event) {
         video.play();
         isPlaying = false;
     }
+
     console.log("tap");
+
 });
 
+Hammer(videoElement).on('press', function (event) {
+    var menu = $('.cctx[data-cctxId="' + $(videoElement).attr('data-cctxId') + '"]');
+    console.log(event.center);
+
+    menu.css('top', event.center.y).css('left', event.center.x).show();
+});
