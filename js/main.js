@@ -1,23 +1,23 @@
 var videoElement = $("#video")[0];
 
-$(videoElement).chromeContext({
-    items: [{
-            title: 'Hello',
-            onclick: function () {
-                console.log('hello.');
-            }
-        },
-        {
-            separator: true
-        },
-        {
-            title: 'キャンセル',
-            onclick: function () {
-                $('.cctx:visible').hide();
-            }
-        }
-    ]
-});
+// $(videoElement).chromeContext({
+//     items: [{
+//             title: 'Hello',
+//             onclick: function () {
+//                 console.log('hello.');
+//             }
+//         },
+//         {
+//             separator: true
+//         },
+//         {
+//             title: 'キャンセル',
+//             onclick: function () {
+//                 $('.cctx:visible').hide();
+//             }
+//         }
+//     ]
+// });
 
 function triggerEvent(element, event) {
     if (document.createEvent) {
