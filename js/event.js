@@ -37,7 +37,12 @@ document.onkeyup = function(e) {
 			backwardFrame();
 		} else if (keycode == 39) {
 			forwardFrame();
+		}else if (keycode == 38) {
+			video.volume += 0.02;
+		} else if (keycode == 40) {
+			video.volume -= 0.02;
 		}
+
 
 		
 		if(keychar == "V"){
@@ -89,6 +94,11 @@ document.onkeyup = function(e) {
 	// if (keycode == 27) { 
 	//  alert('Escapeキーが押されました'); 
 	// } 
+} 
+
+document.onkeyup = function(e) { 
+	e.preventDefault(); 
+	e.stopPropagation(); 
 } 
 
 /*
