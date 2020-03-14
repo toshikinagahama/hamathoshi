@@ -96,7 +96,7 @@ document.onkeyup = function(e) {
 	// } 
 } 
 
-document.onkeyup = function(e) { 
+document.onkeydown = function(e) { 
 	e.preventDefault(); 
 	e.stopPropagation(); 
 } 
